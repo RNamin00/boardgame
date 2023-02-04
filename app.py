@@ -22,7 +22,7 @@ def main():
         preprocessing_tips()
 
 
-def load_data_option() -> Tuple[str, st.DeltaGenerator.DeltaGenerator]:
+def load_data_option(): #-> Tuple[str, st.DeltaGenerator.DeltaGenerator]:
     """ Prepare options for loading data"""
     is_loaded_header = st.sidebar.subheader("⭕️ Data not loaded")
     link_to_data = st.sidebar.text_input('Link to data',
