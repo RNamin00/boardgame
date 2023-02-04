@@ -114,53 +114,53 @@ def load_homepage() -> None:
                 "matches and best/worst players.")
 
 
-def create_layout(df: pd.DataFrame,
-                  player_list: List[str],
-                  is_loaded_header: st.DeltaGenerator.DeltaGenerator) -> None:
-    """ Create the layout after the data has succesfully loaded
+# def create_layout(df: pd.DataFrame,
+#                   player_list: List[str],
+#                   is_loaded_header: ) -> None:
+#     """ Create the layout after the data has succesfully loaded
 
-    Parameters:
-    -----------
+#     Parameters:
+#     -----------
 
-    df : pandas.core.frame.DataFrame
-        The data to be used for the analyses of played board game matches.
+#     df : pandas.core.frame.DataFrame
+#         The data to be used for the analyses of played board game matches.
 
-        Make sure the data has the following structure:
-        |  Date        |  Players          |  Game        |  Scores                  |  Winner     | Version    |
-        |  2018-11-18  |  Peter+Mike       |  Qwixx       |  Peter77+Mike77          |  Peter+Mike | Normal     |
-        |  2018-11-18  |  Chris+Mike       |  Qwixx       |  Chris42+Mike99          |  Mike       | Big Points |
-        |  2018-11-22  |  Mike+Chris       |  Jaipur      |  Mike84+Chris91          |  Chris      | Normal     |
-        |  2018-11-30  |  Peter+Chris+Mike |  Kingdomino  |  Chris43+Mike37+Peter35  |  Chris      | 5x5        |
+#         Make sure the data has the following structure:
+#         |  Date        |  Players          |  Game        |  Scores                  |  Winner     | Version    |
+#         |  2018-11-18  |  Peter+Mike       |  Qwixx       |  Peter77+Mike77          |  Peter+Mike | Normal     |
+#         |  2018-11-18  |  Chris+Mike       |  Qwixx       |  Chris42+Mike99          |  Mike       | Big Points |
+#         |  2018-11-22  |  Mike+Chris       |  Jaipur      |  Mike84+Chris91          |  Chris      | Normal     |
+#         |  2018-11-30  |  Peter+Chris+Mike |  Kingdomino  |  Chris43+Mike37+Peter35  |  Chris      | 5x5        |
 
-    player_list : list of str
-        List of players that participated in the board games
+#     player_list : list of str
+#         List of players that participated in the board games
 
-    is_loaded_header : streamlit.DeltaGenerator.DeltaGenerator
-        Sidebar subheader to be changed if Data is (not) loaded
+#     is_loaded_header : streamlit.DeltaGenerator.DeltaGenerator
+#         Sidebar subheader to be changed if Data is (not) loaded
 
-    """
+#     """
 
-    is_loaded_header.subheader("✔️Data is loaded")
-    st.sidebar.title("Menu")
-    app_mode = st.sidebar.selectbox("Please select a page", ["Homepage",
-                                                             "Data Exploration",
-                                                             "Player Statistics",
-                                                             "Game Statistics",
-                                                             "Head to Head"])
-    if app_mode == 'Homepage':
-        load_homepage()
-        preprocessing_tips()
-    elif app_mode == "Instruction":
-        body = " ".join(open("files/instructions.md", 'r').readlines())
-        st.markdown(body, unsafe_allow_html=True)
-    elif app_mode == "Data Exploration":
-        generalstats.load_page(df)
-    elif app_mode == "Player Statistics":
-        playerstats.load_page(df, player_list)
-    elif app_mode == "Game Statistics":
-        exploregames.load_page(df, player_list)
-    elif app_mode == "Head to Head":
-        headtohead.load_page(df, player_list)
+#     is_loaded_header.subheader("✔️Data is loaded")
+#     st.sidebar.title("Menu")
+#     app_mode = st.sidebar.selectbox("Please select a page", ["Homepage",
+#                                                              "Data Exploration",
+#                                                              "Player Statistics",
+#                                                              "Game Statistics",
+#                                                              "Head to Head"])
+#     if app_mode == 'Homepage':
+#         load_homepage()
+#         preprocessing_tips()
+#     elif app_mode == "Instruction":
+#         body = " ".join(open("files/instructions.md", 'r').readlines())
+#         st.markdown(body, unsafe_allow_html=True)
+#     elif app_mode == "Data Exploration":
+#         generalstats.load_page(df)
+#     elif app_mode == "Player Statistics":
+#         playerstats.load_page(df, player_list)
+#     elif app_mode == "Game Statistics":
+#         exploregames.load_page(df, player_list)
+#     elif app_mode == "Head to Head":
+#         headtohead.load_page(df, player_list)
 
 
 def preprocessing_tips() -> None:
